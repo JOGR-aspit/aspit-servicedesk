@@ -1,0 +1,41 @@
+* text=auto
+
+*.sh text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.editorconfig text eol=lf
+
+Dockerfile text eol=lf
+.env.example text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.rs text eol=lf
+*.cfg text eol=lf
+Makefile text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.otf binary
+*.wasm binary
+
+*.lock binary
+bun.lock binary

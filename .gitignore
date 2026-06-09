@@ -1,0 +1,37 @@
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editor directories and files
+.vscode/*
+.idea
+*.sw?
+*.swp
+*~
+
+# Logs
+*.log
+
+# Temporary files
+*.local
+*.tmp
+*.temp
+
+# Environment files
+.env
+.env.*
+
+# Project docs & guidelines
+AGENTS.md
+DESIGN.md
+docs/
+
+# Local development tools
+.devcontainer/
+scripts/
