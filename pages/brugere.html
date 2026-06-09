@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brugere | IT Support</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar__header">
+      <div class="sidebar__logo">IT Support</div>
+      <button class="sidebar__close" id="sidebar-close" aria-label="Luk menu">&times;</button>
+    </div>
+    <ul class="sidebar__nav">
+      <li>
+        <a href="../index.html" class="sidebar__item">
+          <img src="../assets/house.svg" alt="" class="sidebar__icon">
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="brugere.html" class="sidebar__item sidebar__item--active">
+          <img src="../assets/users.svg" alt="" class="sidebar__icon">
+          Brugere
+        </a>
+      </li>
+      <li>
+        <a href="sager.html" class="sidebar__item">
+          <img src="../assets/file.svg" alt="" class="sidebar__icon">
+          Sager
+        </a>
+      </li>
+      <li>
+        <a href="opret-sag.html" class="sidebar__item sidebar__item--cta">
+          <img src="../assets/plus.svg" alt="" class="sidebar__icon">
+          Opret Sag
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+
+  <main class="main">
+    <div class="mobile-header">
+      <button class="hamburger" id="hamburger" aria-label="Åbn menu">
+        <img src="../assets/menu.svg" alt="" class="hamburger__icon">
+      </button>
+    </div>
+
+    <header class="page-header">
+      <h1 class="page-header__title">Brugere</h1>
+      <p class="page-header__subtitle">Se og administrer brugere i systemet.</p>
+    </header>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
