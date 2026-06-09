@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | IT Support</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar__header">
+      <div class="sidebar__logo">IT Support</div>
+      <button class="sidebar__close" id="sidebar-close" aria-label="Luk menu">&times;</button>
+    </div>
+    <ul class="sidebar__nav">
+      <li>
+        <a href="index.html" class="sidebar__item sidebar__item--active">
+          <img src="assets/house.svg" alt="" class="sidebar__icon">
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="pages/brugere.html" class="sidebar__item">
+          <img src="assets/users.svg" alt="" class="sidebar__icon">
+          Brugere
+        </a>
+      </li>
+      <li>
+        <a href="pages/sager.html" class="sidebar__item">
+          <img src="assets/file.svg" alt="" class="sidebar__icon">
+          Sager
+        </a>
+      </li>
+      <li>
+        <a href="pages/opret-sag.html" class="sidebar__item sidebar__item--cta">
+          <img src="assets/plus.svg" alt="" class="sidebar__icon">
+          Opret Sag
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+
+  <main class="main">
+    <div class="mobile-header">
+      <button class="hamburger" id="hamburger" aria-label="Åbn menu">
+        <img src="assets/menu.svg" alt="" class="hamburger__icon">
+      </button>
+    </div>
+
+    <header class="page-header">
+      <h1 class="page-header__title">Dashboard</h1>
+      <p class="page-header__subtitle">Velkommen tilbage! Her er en oversigt over dine support-sager.</p>
+    </header>
+
+    <section class="stats-grid" aria-label="Statistik">
+      <article class="stat-card">
+        <span class="stat-card__label">Sager i alt</span>
+        <span class="stat-card__value">247</span>
+        <span class="stat-card__sublabel">+12 denne uge</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-card__label">Åbne</span>
+        <span class="stat-card__value">18</span>
+        <span class="stat-card__sublabel">4 hastende</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-card__label">Afventer</span>
+        <span class="stat-card__value">8</span>
+        <span class="stat-card__sublabel">Venter på svar</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-card__label">Løst</span>
+        <span class="stat-card__value">221</span>
+        <span class="stat-card__sublabel">Denne måned</span>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title" id="table-heading">Seneste Sager</h2>
+      <div class="table-container">
+        <table class="data-table" aria-labelledby="table-heading">
+          <thead class="data-table__head">
+            <tr class="data-table__row">
+              <th scope="col" class="data-table__header">ID</th>
+              <th scope="col" class="data-table__header">Titel</th>
+              <th scope="col" class="data-table__header">Status</th>
+              <th scope="col" class="data-table__header">Prioritet</th>
+              <th scope="col" class="data-table__header">Tildelt</th>
+              <th scope="col" class="data-table__header">Dato</th>
+            </tr>
+          </thead>
+          <tbody id="ticket-table-body">
+            <tr class="data-table__row" data-ticket-id="247" data-title="Projektør virker ikke i lokale 101" data-status="open" data-priority="high" data-assigned="Asbjørn Odinsholm">
+              <td class="data-table__cell">#247</td>
+              <td class="data-table__cell">Projektør virker ikke i lokale 101</td>
+              <td class="data-table__cell"><span class="badge badge--open">Åben</span></td>
+              <td class="data-table__cell"><span class="priority priority--high">Høj</span></td>
+              <td class="data-table__cell">Asbjørn Odinsholm</td>
+              <td class="data-table__cell">2026-05-21</td>
+            </tr>
+            <tr class="data-table__row" data-ticket-id="246" data-title="Elever har login-problemer" data-status="pending" data-priority="medium" data-assigned="Jonas Greve">
+              <td class="data-table__cell">#246</td>
+              <td class="data-table__cell">Elever har login-problemer</td>
+              <td class="data-table__cell"><span class="badge badge--pending">Afventer</span></td>
+              <td class="data-table__cell"><span class="priority priority--medium">Mellem</span></td>
+              <td class="data-table__cell">Jonas Greve</td>
+              <td class="data-table__cell">2026-05-21</td>
+            </tr>
+            <tr class="data-table__row" data-ticket-id="245" data-title="WiFi-forbindelse afbryder ofte" data-status="open" data-priority="low" data-assigned="Hanne Lund">
+              <td class="data-table__cell">#245</td>
+              <td class="data-table__cell">WiFi-forbindelse afbryder ofte</td>
+              <td class="data-table__cell"><span class="badge badge--open">Åben</span></td>
+              <td class="data-table__cell"><span class="priority priority--low">Lav</span></td>
+              <td class="data-table__cell">Hanne Lund</td>
+              <td class="data-table__cell">2026-05-20</td>
+            </tr>
+            <tr class="data-table__row" data-ticket-id="244" data-title="Anmodning om software-installation" data-status="resolved" data-priority="low" data-assigned="Christian Dohrmann">
+              <td class="data-table__cell">#244</td>
+              <td class="data-table__cell">Anmodning om software-installation</td>
+              <td class="data-table__cell"><span class="badge badge--resolved">Løst</span></td>
+              <td class="data-table__cell"><span class="priority priority--low">Lav</span></td>
+              <td class="data-table__cell">Christian Dohrmann</td>
+              <td class="data-table__cell">2026-05-20</td>
+            </tr>
+            <tr class="data-table__row" data-ticket-id="243" data-title="Papirstop i printer - Kontoret" data-status="resolved" data-priority="medium" data-assigned="Luca Jessen">
+              <td class="data-table__cell">#243</td>
+              <td class="data-table__cell">Papirstop i printer - Kontoret</td>
+              <td class="data-table__cell"><span class="badge badge--resolved">Løst</span></td>
+              <td class="data-table__cell"><span class="priority priority--medium">Mellem</span></td>
+              <td class="data-table__cell">Luca Jessen</td>
+              <td class="data-table__cell">2026-05-19</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="edit-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-heading">
+    <div class="modal__backdrop"></div>
+    <div class="modal__container">
+      <header class="modal__header">
+        <h2 class="modal__title" id="modal-title-heading">Redigér Sag</h2>
+        <button class="modal__close" id="modal-close" aria-label="Luk">&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="form-group">
+          <label for="modal-title" class="form-group__label">Titel</label>
+          <input type="text" id="modal-title" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="modal-description" class="form-group__label">Beskrivelse</label>
+          <textarea id="modal-description" class="form-input" rows="4" placeholder="Beskrivelse af sagen..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="modal-status" class="form-group__label">Status</label>
+          <select id="modal-status" class="form-input">
+            <option value="open">Åben</option>
+            <option value="pending">Afventer</option>
+            <option value="resolved">Løst</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="modal-priority" class="form-group__label">Prioritet</label>
+          <select id="modal-priority" class="form-input">
+            <option value="high">Høj</option>
+            <option value="medium">Mellem</option>
+            <option value="low">Lav</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="modal-assigned" class="form-group__label">Tildelt</label>
+          <select id="modal-assigned" class="form-input">
+            <option value="">Vælg tekniker</option>
+            <option value="Asbjørn Odinsholm">Asbjørn Odinsholm</option>
+            <option value="Jonas Greve">Jonas Greve</option>
+            <option value="Hanne Lund">Hanne Lund</option>
+            <option value="Christian Dohrmann">Christian Dohrmann</option>
+            <option value="Luca Jessen">Luca Jessen</option>
+            <option value="Niels Kiviok">Niels Kiviok</option>
+          </select>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--secondary" id="modal-cancel">Annullér</button>
+        <button class="btn btn--primary">Gem ændringer</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
