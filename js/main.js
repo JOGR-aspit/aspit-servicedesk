@@ -111,11 +111,65 @@ function initCreateDate() {
   createdDateInput.value = today;
 }
 
+function initUserFilters() {
+  const searchInput = document.getElementById('user-search');
+  const roleSelect = document.getElementById('filter-role');
+  const tbody = document.getElementById('user-table-body');
+  if (!tbody) return;
+
+  function filterUsers() {
+    const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    const role = roleSelect ? roleSelect.value : '';
+
+    const rows = tbody.querySelectorAll('.data-table__row');
+    rows.forEach((row) => {
+      const cells = row.querySelectorAll('.data-table__cell');
+      const name = cells[0] ? cells[0].textContent.toLowerCase() : '';
+      const email = cells[1] ? cells[1].textContent.toLowerCase() : '';
+      const rowRole = cells[2] ? cells[2].textContent : '';
+
+      const matchesSearch = !query || name.includes(query) || email.includes(query);
+      const matchesRole = !role || rowRole === role;
+
+      row.style.display = matchesSearch && matchesRole ? '' : 'none';
+    });
+  }
+
+  if (searchInput) searchInput.addEventListener('input', filterUsers);
+  if (roleSelect) roleSelect.addEventListener('change', filterUsers);
+}
+
+function initUserActions() {
+  const tbody = document.getElementById('user-table-body');
+  if (!tbody) return;
+
+  tbody.addEventListener('click', (event) => {
+    const btn = event.target.closest('.action-btn');
+    if (!btn) return;
+
+    const row = btn.closest('.data-table__row');
+    if (!row) return;
+
+    const nameCell = row.querySelector('.data-table__cell');
+    const name = nameCell ? nameCell.textContent : '';
+
+    if (btn.classList.contains('action-btn--danger')) {
+      if (confirm(`Er du sikker på, at du vil slette ${name}?`)) {
+        row.remove();
+      }
+    } else {
+      alert(`Redigér bruger: ${name}`);
+    }
+  });
+}
+
 function init() {
   initTableRows();
   initMobileNav();
   initModal();
   initCreateDate();
+  initUserFilters();
+  initUserActions();
 }
 
 init();

@@ -50,9 +50,115 @@
     </div>
 
     <header class="page-header">
-      <h1 class="page-header__title">Brugere</h1>
-      <p class="page-header__subtitle">Se og administrer brugere i systemet.</p>
+      <h1 class="page-header__title">Brugeradministration</h1>
+      <p class="page-header__subtitle">Administrer systembrugere, roller og rettigheder.</p>
     </header>
+
+    <div class="filter-bar">
+      <div class="filter-bar__group">
+        <label for="user-search" class="filter-bar__label visually-hidden">Søg brugere</label>
+        <input type="search" id="user-search" class="form-field" placeholder="Søg brugere efter navn eller email...">
+      </div>
+      <div class="filter-bar__group">
+        <label for="filter-role" class="filter-bar__label">Rolle</label>
+        <select id="filter-role" class="form-field filter-bar__select">
+          <option value="">Alle</option>
+          <option value="Admin">Admin</option>
+          <option value="Tekniker">Tekniker</option>
+          <option value="Læserettigheder">Læserettigheder</option>
+          <option value="Bruger">Bruger</option>
+        </select>
+      </div>
+      <button class="btn btn--primary" id="add-user-btn">Tilføj Bruger</button>
+    </div>
+
+    <section class="card">
+      <div class="table-container">
+        <table class="data-table" aria-label="Brugere">
+          <thead class="data-table__head">
+            <tr class="data-table__row">
+              <th scope="col" class="data-table__header">Navn</th>
+              <th scope="col" class="data-table__header">Email</th>
+              <th scope="col" class="data-table__header">Rolle</th>
+              <th scope="col" class="data-table__header">Status</th>
+              <th scope="col" class="data-table__header">Handlinger</th>
+            </tr>
+          </thead>
+          <tbody id="user-table-body">
+            <tr class="data-table__row" data-user-id="1" data-name="Jens Clausen" data-email="jens.clausen@skole.dk" data-role="Admin" data-status="active">
+              <td class="data-table__cell">Jens Clausen</td>
+              <td class="data-table__cell">jens.clausen@skole.dk</td>
+              <td class="data-table__cell">Admin</td>
+              <td class="data-table__cell"><span class="badge badge--active">Aktiv</span></td>
+              <td class="data-table__cell">
+                <button type="button" class="action-btn" aria-label="Redigér Jens Clausen">
+                  <img src="../assets/pencil.svg" alt="" class="action-btn__icon">
+                </button>
+                <button type="button" class="action-btn action-btn--danger" aria-label="Slet Jens Clausen">
+                  <img src="../assets/trash.svg" alt="" class="action-btn__icon">
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__row" data-user-id="2" data-name="Malene Gydesen" data-email="malene.gydesen@skole.dk" data-role="Admin" data-status="active">
+              <td class="data-table__cell">Malene Gydesen</td>
+              <td class="data-table__cell">malene.gydesen@skole.dk</td>
+              <td class="data-table__cell">Admin</td>
+              <td class="data-table__cell"><span class="badge badge--active">Aktiv</span></td>
+              <td class="data-table__cell">
+                <button type="button" class="action-btn" aria-label="Redigér Malene Gydesen">
+                  <img src="../assets/pencil.svg" alt="" class="action-btn__icon">
+                </button>
+                <button type="button" class="action-btn action-btn--danger" aria-label="Slet Malene Gydesen">
+                  <img src="../assets/trash.svg" alt="" class="action-btn__icon">
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__row" data-user-id="3" data-name="Daniel Weiss" data-email="daniel.weiss@skole.dk" data-role="Tekniker" data-status="active">
+              <td class="data-table__cell">Daniel Weiss</td>
+              <td class="data-table__cell">daniel.weiss@skole.dk</td>
+              <td class="data-table__cell">Tekniker</td>
+              <td class="data-table__cell"><span class="badge badge--active">Aktiv</span></td>
+              <td class="data-table__cell">
+                <button type="button" class="action-btn" aria-label="Redigér Daniel Weiss">
+                  <img src="../assets/pencil.svg" alt="" class="action-btn__icon">
+                </button>
+                <button type="button" class="action-btn action-btn--danger" aria-label="Slet Daniel Weiss">
+                  <img src="../assets/trash.svg" alt="" class="action-btn__icon">
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__row" data-user-id="4" data-name="Karin Weber" data-email="karin.weber@skole.dk" data-role="Tekniker" data-status="inactive">
+              <td class="data-table__cell">Karin Weber</td>
+              <td class="data-table__cell">karin.weber@skole.dk</td>
+              <td class="data-table__cell">Tekniker</td>
+              <td class="data-table__cell"><span class="badge badge--inactive">Inaktiv</span></td>
+              <td class="data-table__cell">
+                <button type="button" class="action-btn" aria-label="Redigér Karin Weber">
+                  <img src="../assets/pencil.svg" alt="" class="action-btn__icon">
+                </button>
+                <button type="button" class="action-btn action-btn--danger" aria-label="Slet Karin Weber">
+                  <img src="../assets/trash.svg" alt="" class="action-btn__icon">
+                </button>
+              </td>
+            </tr>
+            <tr class="data-table__row" data-user-id="5" data-name="Hanne Lund" data-email="hanne.lund@skole.dk" data-role="Læserettigheder" data-status="active">
+              <td class="data-table__cell">Hanne Lund</td>
+              <td class="data-table__cell">hanne.lund@skole.dk</td>
+              <td class="data-table__cell">Læserettigheder</td>
+              <td class="data-table__cell"><span class="badge badge--active">Aktiv</span></td>
+              <td class="data-table__cell">
+                <button type="button" class="action-btn" aria-label="Redigér Hanne Lund">
+                  <img src="../assets/pencil.svg" alt="" class="action-btn__icon">
+                </button>
+                <button type="button" class="action-btn action-btn--danger" aria-label="Slet Hanne Lund">
+                  <img src="../assets/trash.svg" alt="" class="action-btn__icon">
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <script src="../js/main.js"></script>
