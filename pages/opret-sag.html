@@ -53,6 +53,72 @@
       <h1 class="page-header__title">Opret Ny Sag</h1>
       <p class="page-header__subtitle">Opret en ny support-sag på vegne af en bruger.</p>
     </header>
+
+    <section class="card">
+      <h2 class="card__title">Sagsdetaljer</h2>
+      <form id="create-ticket-form">
+        <div class="form-group">
+          <label for="create-title" class="form-group__label">Titel</label>
+          <input type="text" id="create-title" class="form-input" placeholder="Kort beskrivelse af problemet..." required>
+        </div>
+        <div class="form-group">
+          <label for="create-type" class="form-group__label">Type</label>
+          <select id="create-type" class="form-input" required>
+            <option value="">Vælg type</option>
+            <option value="t1">T1</option>
+            <option value="t2">T2</option>
+            <option value="t3">T3</option>
+            <option value="t4">T4</option>
+            <option value="other">Andet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="create-description" class="form-group__label">Beskrivelse</label>
+          <textarea id="create-description" class="form-input" rows="4" placeholder="Beskrivelse af sagen..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="create-location" class="form-group__label">Lokation</label>
+          <input type="text" id="create-location" class="form-input" placeholder="Hvor er problemet?">
+        </div>
+        <div class="form-group">
+          <label for="create-status" class="form-group__label">Status</label>
+          <select id="create-status" class="form-input">
+            <option value="not-started" selected>Ikke Startet</option>
+            <option value="open">Åben</option>
+            <option value="pending">Afventer</option>
+            <option value="resolved">Løst</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="create-priority" class="form-group__label">Prioritet</label>
+          <select id="create-priority" class="form-input">
+            <option value="high">Høj</option>
+            <option value="medium">Mellem</option>
+            <option value="low">Lav</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="create-assigned" class="form-group__label">Tildelt Medarbejder</label>
+          <select id="create-assigned" class="form-input">
+            <option value="">Vælg tekniker</option>
+            <option value="Asbjørn Odinsholm">Asbjørn Odinsholm</option>
+            <option value="Jonas Greve">Jonas Greve</option>
+            <option value="Hanne Lund">Hanne Lund</option>
+            <option value="Christian Dohrmann">Christian Dohrmann</option>
+            <option value="Luca Jessen">Luca Jessen</option>
+            <option value="Niels Kiviok">Niels Kiviok</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="create-date" class="form-group__label">Oprettelsesdato</label>
+          <input type="text" id="create-date" class="form-input" disabled>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn--primary">Opret Sag</button>
+          <button type="reset" class="btn btn--secondary">Nulstil</button>
+        </div>
+      </form>
+    </section>
   </main>
 
   <script src="../js/main.js"></script>
