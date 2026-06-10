@@ -102,6 +102,7 @@ a {
 
 button {
     font-family: inherit;
+    color: inherit;
     cursor: pointer;
     border: none;
     background: none;
@@ -601,6 +602,25 @@ body.modal-open {
 
 .btn--secondary:hover {
     background-color: var(--color-surface-container);
+}
+
+.btn--danger {
+    background-color: var(--color-error);
+    color: var(--color-on-error);
+    border: none;
+}
+
+.btn--danger:hover {
+    background-color: var(--color-on-error-container);
+    color: var(--color-on-error);
+}
+
+.modal--danger .modal__container {
+    border-top: 4px solid var(--color-error);
+}
+
+.modal--danger .modal__title {
+    color: var(--color-on-error-container);
 }
 
 /* Filter Bar */

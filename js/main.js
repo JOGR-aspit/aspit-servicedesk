@@ -151,11 +151,68 @@ function initUserActions() {
     if (!row) return;
 
     if (btn.classList.contains('action-btn--danger')) {
-      if (confirm(`Er du sikker på, at du vil slette ${row.querySelector('.data-table__cell')?.textContent || 'denne bruger'}?`)) {
-        row.remove();
-      }
+      openDeleteUserModal(row);
     } else {
       openUserModal(row.dataset.userId);
+    }
+  });
+}
+
+function openDeleteUserModal(row) {
+  const modal = document.getElementById('user-delete-modal');
+  const message = document.getElementById('user-delete-modal-message');
+  if (!modal) return;
+
+  const nameCell = row.querySelector('.data-table__cell');
+  const name = nameCell ? nameCell.textContent : 'denne bruger';
+
+  if (message) message.textContent = `Er du sikker på, at du vil slette ${name}? Denne handling kan ikke fortrydes.`;
+
+  modal.setAttribute('data-delete-user-id', row.dataset.userId);
+  modal.classList.add('modal--open');
+  document.body.classList.add('modal-open');
+}
+
+function closeDeleteUserModal() {
+  const modal = document.getElementById('user-delete-modal');
+  if (!modal) return;
+  modal.classList.remove('modal--open');
+  modal.removeAttribute('data-delete-user-id');
+  document.body.classList.remove('modal-open');
+}
+
+function confirmDeleteUser() {
+  const modal = document.getElementById('user-delete-modal');
+  if (!modal) return;
+
+  const userId = modal.getAttribute('data-delete-user-id');
+  const row = document.querySelector(`tr[data-user-id="${userId}"]`);
+  if (row) row.remove();
+
+  closeDeleteUserModal();
+}
+
+function initDeleteUserModal() {
+  const closeBtn = document.getElementById('user-delete-modal-close');
+  const cancelBtn = document.getElementById('user-delete-modal-cancel');
+  const confirmBtn = document.getElementById('user-delete-modal-confirm');
+  const modal = document.getElementById('user-delete-modal');
+
+  if (!modal) return;
+
+  if (closeBtn) closeBtn.addEventListener('click', closeDeleteUserModal);
+  if (cancelBtn) cancelBtn.addEventListener('click', closeDeleteUserModal);
+  if (confirmBtn) confirmBtn.addEventListener('click', confirmDeleteUser);
+
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal || event.target.classList.contains('modal')) {
+      closeDeleteUserModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('modal--open')) {
+      closeDeleteUserModal();
     }
   });
 }
@@ -341,6 +398,7 @@ function init() {
   initUserActions();
   initUserModal();
   initCreateUserModal();
+  initDeleteUserModal();
   initAddUserButton();
 }
 
