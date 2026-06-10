@@ -150,15 +150,77 @@ function initUserActions() {
     const row = btn.closest('.data-table__row');
     if (!row) return;
 
-    const nameCell = row.querySelector('.data-table__cell');
-    const name = nameCell ? nameCell.textContent : '';
-
     if (btn.classList.contains('action-btn--danger')) {
-      if (confirm(`Er du sikker på, at du vil slette ${name}?`)) {
+      if (confirm(`Er du sikker på, at du vil slette ${row.querySelector('.data-table__cell')?.textContent || 'denne bruger'}?`)) {
         row.remove();
       }
     } else {
-      alert(`Redigér bruger: ${name}`);
+      openUserModal(row.dataset.userId);
+    }
+  });
+}
+
+function openUserModal(userId) {
+  const modal = document.getElementById('user-edit-modal');
+  if (!modal) return;
+
+  const idInput = document.getElementById('user-modal-id');
+  const nameInput = document.getElementById('user-modal-name');
+  const emailInput = document.getElementById('user-modal-email');
+  const passwordInput = document.getElementById('user-modal-password');
+  const roleSelect = document.getElementById('user-modal-role');
+  const statusInput = document.getElementById('user-modal-status');
+  const statusLabel = modal.querySelector('.toggle__label-text');
+
+  const row = document.querySelector(`tr[data-user-id="${userId}"]`);
+  if (row) {
+    if (idInput) idInput.value = `#${userId}`;
+    if (nameInput) nameInput.value = row.dataset.name || '';
+    if (emailInput) emailInput.value = row.dataset.email || '';
+    if (passwordInput) passwordInput.value = '';
+    if (roleSelect) roleSelect.value = row.dataset.role || '';
+    if (statusInput) statusInput.checked = row.dataset.status === 'active';
+    if (statusLabel) statusLabel.textContent = row.dataset.status === 'active' ? 'Aktiv' : 'Inaktiv';
+  }
+
+  modal.classList.add('modal--open');
+  document.body.classList.add('modal-open');
+}
+
+function closeUserModal() {
+  const modal = document.getElementById('user-edit-modal');
+  if (!modal) return;
+  modal.classList.remove('modal--open');
+  document.body.classList.remove('modal-open');
+}
+
+function initUserModal() {
+  const closeBtn = document.getElementById('user-modal-close');
+  const cancelBtn = document.getElementById('user-modal-cancel');
+  const modal = document.getElementById('user-edit-modal');
+  const statusInput = document.getElementById('user-modal-status');
+  const statusLabel = modal ? modal.querySelector('.toggle__label-text') : null;
+
+  if (!modal) return;
+
+  if (closeBtn) closeBtn.addEventListener('click', closeUserModal);
+  if (cancelBtn) cancelBtn.addEventListener('click', closeUserModal);
+
+  if (statusInput && statusLabel) {
+    statusInput.addEventListener('change', () => {
+      statusLabel.textContent = statusInput.checked ? 'Aktiv' : 'Inaktiv';
+    });
+  }
+
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal || event.target.classList.contains('modal')) {
+      closeUserModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('modal--open')) {
+      closeUserModal();
     }
   });
 }
@@ -170,6 +232,7 @@ function init() {
   initCreateDate();
   initUserFilters();
   initUserActions();
+  initUserModal();
 }
 
 init();

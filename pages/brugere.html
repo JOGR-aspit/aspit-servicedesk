@@ -161,6 +161,56 @@
     </section>
   </main>
 
+  <div class="modal" id="user-edit-modal" role="dialog" aria-modal="true" aria-labelledby="user-modal-title-heading">
+    <div class="modal__container">
+      <header class="modal__header">
+        <h2 class="modal__title" id="user-modal-title-heading">Redigér Bruger</h2>
+        <button class="modal__close" id="user-modal-close" aria-label="Luk">&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="form-group">
+          <label for="user-modal-id" class="form-group__label">Bruger-ID</label>
+          <input type="text" id="user-modal-id" class="form-field" disabled>
+        </div>
+        <div class="form-group">
+          <label for="user-modal-name" class="form-group__label">Navn</label>
+          <input type="text" id="user-modal-name" class="form-field">
+        </div>
+        <div class="form-group">
+          <label for="user-modal-email" class="form-group__label">E-mail</label>
+          <input type="text" id="user-modal-email" class="form-field">
+        </div>
+        <div class="form-group">
+          <label for="user-modal-password" class="form-group__label">Adgangskode</label>
+          <input type="password" id="user-modal-password" class="form-field">
+        </div>
+        <div class="form-group">
+          <label for="user-modal-role" class="form-group__label">Rolle</label>
+          <select id="user-modal-role" class="form-field">
+            <option value="Admin">Admin</option>
+            <option value="Tekniker">Tekniker</option>
+            <option value="Læserettigheder">Læserettigheder</option>
+            <option value="Bruger">Bruger</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-group__label">Status</label>
+          <label class="toggle">
+            <input type="checkbox" id="user-modal-status" class="toggle__input">
+            <span class="toggle__track" aria-hidden="true">
+              <span class="toggle__thumb"></span>
+            </span>
+            <span class="toggle__label-text">Aktiv</span>
+          </label>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--secondary" id="user-modal-cancel">Annullér</button>
+        <button class="btn btn--primary">Gem ændringer</button>
+      </footer>
+    </div>
+  </div>
+
   <script src="../js/main.js"></script>
 </body>
 </html>
