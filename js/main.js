@@ -225,6 +225,113 @@ function initUserModal() {
   });
 }
 
+function openCreateUserModal() {
+  const modal = document.getElementById('user-create-modal');
+  if (!modal) return;
+
+  const nameInput = document.getElementById('create-user-modal-name');
+  const emailInput = document.getElementById('create-user-modal-email');
+  const passwordInput = document.getElementById('create-user-modal-password');
+  const roleSelect = document.getElementById('create-user-modal-role');
+  const statusInput = document.getElementById('create-user-modal-status');
+  const statusLabel = document.getElementById('create-user-modal-status-label');
+
+  if (nameInput) nameInput.value = '';
+  if (emailInput) emailInput.value = '';
+  if (passwordInput) passwordInput.value = '';
+  const confirmInput = document.getElementById('create-user-modal-password-confirm');
+  if (confirmInput) confirmInput.value = '';
+  if (roleSelect) roleSelect.value = 'Admin';
+  if (statusInput) statusInput.checked = true;
+  if (statusLabel) statusLabel.textContent = 'Aktiv';
+
+  modal.classList.add('modal--open');
+  document.body.classList.add('modal-open');
+}
+
+function closeCreateUserModal() {
+  const modal = document.getElementById('user-create-modal');
+  if (!modal) return;
+  modal.classList.remove('modal--open');
+  document.body.classList.remove('modal-open');
+}
+
+function handleCreateUserSubmit() {
+  const password = document.getElementById('create-user-modal-password');
+  const confirm = document.getElementById('create-user-modal-password-confirm');
+
+  if (password && confirm && password.value !== confirm.value) {
+    alert('Adgangskoderne er ikke ens. Tast venligst samme adgangskode i begge felter.');
+    confirm.focus();
+    return;
+  }
+
+  if (password && password.value.length < 1) {
+    alert('Adgangskoden må ikke være tom.');
+    password.focus();
+    return;
+  }
+
+  const name = document.getElementById('create-user-modal-name');
+  const email = document.getElementById('create-user-modal-email');
+  const role = document.getElementById('create-user-modal-role');
+
+  if (name && !name.value.trim()) {
+    alert('Navn er et påkrævet felt.');
+    name.focus();
+    return;
+  }
+
+  if (email && !email.value.trim()) {
+    alert('E-mail er et påkrævet felt.');
+    email.focus();
+    return;
+  }
+
+  alert(`Bruger oprettet:\nNavn: ${name ? name.value : ''}\nEmail: ${email ? email.value : ''}\nRolle: ${role ? role.value : ''}`);
+  closeCreateUserModal();
+}
+
+function initCreateUserModal() {
+  const closeBtn = document.getElementById('create-user-modal-close');
+  const cancelBtn = document.getElementById('create-user-modal-cancel');
+  const modal = document.getElementById('user-create-modal');
+  const statusInput = document.getElementById('create-user-modal-status');
+  const statusLabel = document.getElementById('create-user-modal-status-label');
+
+  if (!modal) return;
+
+  if (closeBtn) closeBtn.addEventListener('click', closeCreateUserModal);
+  if (cancelBtn) cancelBtn.addEventListener('click', closeCreateUserModal);
+
+  const saveBtn = modal.querySelector('.modal__footer .btn--primary');
+  if (saveBtn) saveBtn.addEventListener('click', handleCreateUserSubmit);
+
+  if (statusInput && statusLabel) {
+    statusInput.addEventListener('change', () => {
+      statusLabel.textContent = statusInput.checked ? 'Aktiv' : 'Inaktiv';
+    });
+  }
+
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal || event.target.classList.contains('modal')) {
+      closeCreateUserModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('modal--open')) {
+      closeCreateUserModal();
+    }
+  });
+}
+
+function initAddUserButton() {
+  const addBtn = document.getElementById('add-user-btn');
+  if (!addBtn) return;
+  addBtn.addEventListener('click', openCreateUserModal);
+}
+
 function init() {
   initTableRows();
   initMobileNav();
@@ -233,6 +340,8 @@ function init() {
   initUserFilters();
   initUserActions();
   initUserModal();
+  initCreateUserModal();
+  initAddUserButton();
 }
 
 init();

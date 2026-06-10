@@ -211,6 +211,56 @@
     </div>
   </div>
 
+  <div class="modal" id="user-create-modal" role="dialog" aria-modal="true" aria-labelledby="create-user-modal-title-heading">
+    <div class="modal__container">
+      <header class="modal__header">
+        <h2 class="modal__title" id="create-user-modal-title-heading">Tilføj Bruger</h2>
+        <button class="modal__close" id="create-user-modal-close" aria-label="Luk">&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="form-group">
+          <label for="create-user-modal-name" class="form-group__label">Navn</label>
+          <input type="text" id="create-user-modal-name" class="form-field">
+        </div>
+        <div class="form-group">
+          <label for="create-user-modal-email" class="form-group__label">E-mail</label>
+          <input type="text" id="create-user-modal-email" class="form-field">
+        </div>
+        <div class="form-group">
+          <label for="create-user-modal-password" class="form-group__label">Adgangskode</label>
+          <input type="password" id="create-user-modal-password" class="form-field">
+        </div>
+        <div class="form-group">
+          <label for="create-user-modal-password-confirm" class="form-group__label">Bekræft Adgangskode</label>
+          <input type="password" id="create-user-modal-password-confirm" class="form-field">
+        </div>
+        <div class="form-group">
+          <label for="create-user-modal-role" class="form-group__label">Rolle</label>
+          <select id="create-user-modal-role" class="form-field">
+            <option value="Admin">Admin</option>
+            <option value="Tekniker">Tekniker</option>
+            <option value="Læserettigheder">Læserettigheder</option>
+            <option value="Bruger">Bruger</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-group__label">Status</label>
+          <label class="toggle">
+            <input type="checkbox" id="create-user-modal-status" class="toggle__input">
+            <span class="toggle__track" aria-hidden="true">
+              <span class="toggle__thumb"></span>
+            </span>
+            <span class="toggle__label-text" id="create-user-modal-status-label">Aktiv</span>
+          </label>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--secondary" id="create-user-modal-cancel">Annullér</button>
+        <button class="btn btn--primary">Gem ændringer</button>
+      </footer>
+    </div>
+  </div>
+
   <script src="../js/main.js"></script>
 </body>
 </html>
