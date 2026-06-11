@@ -140,8 +140,10 @@ body.modal-open {
 }
 
 .sidebar__logo {
-    font: var(--font-headline-md);
-    font-weight: 700;
+    max-width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .sidebar__close {

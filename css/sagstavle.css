@@ -26,9 +26,10 @@ body {
     margin-bottom: var(--space-xl);
 }
 
-.kanban-header__title {
-    font: var(--font-headline-md);
-    font-weight: 700;
+.kanban-header__logo {
+    max-width: 50px;
+    height: auto;
+    display: block;
 }
 
 .kanban-header__back {
@@ -81,7 +82,12 @@ body {
     color: var(--color-error);
 }
 
-.stat-card__urgent-count {
+.stat-card--focus .stat-card__value {
+    color: var(--color-error);
+}
+
+.stat-card--focus .stat-card__sublabel,
+.stat-card--focus .stat-card__urgent-count {
     color: var(--color-error);
     font-weight: 700;
 }
@@ -139,7 +145,7 @@ body {
 
 .kanban-column__header--progress {
     background-color: var(--color-secondary);
-    color: var(--color-on-secondary);
+    color: var(--color-on-primary);
 }
 
 .kanban-column__header--pending {

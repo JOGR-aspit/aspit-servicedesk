@@ -28,6 +28,11 @@
     color: var(--color-error);
 }
 
+.stat-card--focus .stat-card__value {
+    color: var(--color-error);
+}
+
+.stat-card--focus .stat-card__sublabel,
 .stat-card__urgent-count {
     color: var(--color-error);
     font-weight: 700;

@@ -80,7 +80,28 @@ function initModal() {
   });
 }
 
+function updateDashboardStats() {
+  const openCard = document.getElementById('stat-open');
+  if (openCard) {
+    const urgentCount = parseInt(openCard.querySelector('.stat-card__urgent-count').textContent, 10) || 0;
+    openCard.classList.toggle('stat-card--focus', urgentCount > 0);
+  }
+
+  const pendingCard = document.getElementById('stat-pending');
+  if (pendingCard) {
+    const pendingCount = parseInt(pendingCard.querySelector('.stat-card__value').textContent, 10) || 0;
+    pendingCard.classList.toggle('stat-card--focus', pendingCount > 0);
+  }
+
+  const resolvedCard = document.getElementById('stat-resolved');
+  if (resolvedCard) {
+    // TODO: Add recent count check when backend is connected.
+    // For now, resolved card has no conditional colouring.
+  }
+}
+
 (function init() {
   initTableRows();
   initModal();
+  updateDashboardStats();
 })();
